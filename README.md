@@ -1,46 +1,91 @@
-## Procédure:
+## Installation:
 
-On lance le docker-compose
+
+
 ```
 sudo docker-compose up -d --build
 ```
 
-On attach le debug dans VsCode avec F5 ou Run > Start debugging
-
+Then attach debug to vscode by pressing F5 or Run > Start debugging
+<!-- 
 ## Liste des extensions interressantes:
 
-![alt text](extensions.png)
+![alt text](extensions.png) -->
 
 ## settings.json
 
-```
+```json
 {
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[python]": {
-        "editor.formatOnSave": true
-    },
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "python.linting.banditEnabled": false,
-    "window.zoomLevel": -1,
-    "workbench.iconTheme": "material-icon-theme",
-    "tabnine.experimentalAutoImports": true,
-    "redhat.telemetry.enabled": false,
-    "[xml]": {
-        "editor.defaultFormatter": "redhat.vscode-xml",
-        "editor.formatOnSave": true
-    },
-    "python.defaultInterpreterPath": "/usr/bin/python3"
+	"terminal.integrated.fontFamily": "MesloLGS NF",
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"editor.formatOnSave": true,
+	"tabnine.experimentalAutoImports": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.tabSize": 2
+	},
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"editor.accessibilitySupport": "off",
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.tabSize": 2
+	},
+	"[xml]": {
+		"editor.defaultFormatter": "DotJoshJohnson.xml"
+	},
+	"[dart]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.rulers": [80],
+		"editor.selectionHighlight": false,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": false
+	},
+	"go.toolsManagement.autoUpdate": true,
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[python]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
+	},
+
+	"python.formatting.provider": "black",
+	"git.autofetch": true,
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.tabSize": 2
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.tabSize": 2
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.tabSize": 2
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"python.linting.pylintEnabled": true,
+	"python.linting.enabled": true,
+	"python.linting.pylintArgs": [
+		"--load-plugins",
+		"pylint_odoo",
+		"--disable=E0611,C0114,C8103,C8112,W1202,W1203",
+		"--disable="
+	]
 }
 ```
 
 ## Aditionnal memo
-
 
 Pour dump la db du container
 ```
