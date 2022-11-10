@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug Attach",
+			"type": "python",
+			"request": "attach",
+			"connect": {
+				"host": "localhost",
+				"port": 3001
+			},
+			"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}",
+					"remoteRoot": "."
+				}
+			]
+		}
+	]
+}

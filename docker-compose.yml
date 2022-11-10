@@ -1,0 +1,83 @@
+version: '3.1'
+services:
+  react: 
+    container_name: "docker-web-react"
+    image: arm64v8/node
+    restart: always
+    command: sh -c "cd /var/react && npm i && npm start"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./react:/var/react
+    networks:
+      - network-odoo-nginx
+  web:
+    container_name: "docker-web-odoo"
+    platform: linux/x86_64
+    restart: always 
+    user: odoo:odoo
+    build: 
+      dockerfile: OdooDebug
+      context: .
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+      - "3001:3001"
+    volumes:
+      - ./config:/etc/odoo:ro
+      - ./addons:/mnt/extra-addons:ro
+    environment:
+      - PASSWORD_FILE=/run/secrets/postgresql_password
+    secrets:
+      - postgresql_password
+    networks:
+      - network-odoo-db
+      - network-odoo-nginx
+
+  db:
+    container_name: "docker-db-postgresql"
+    platform: linux/x86_64
+    restart: always
+    image: postgis/postgis
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata:rw
+    secrets:
+      - postgresql_password
+    networks:
+      - network-odoo-db
+  
+  reverse-proxy:
+    image: arm64v8/nginx
+    depends_on:
+      - web
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    networks:
+      - network-odoo-nginx
+
+
+volumes:
+  odoo-web-data:
+    name: odoo-web-data
+  odoo-db-data:
+    name: odoo-db-data
+
+secrets:
+  postgresql_password:
+    file: odoo_pg_pass
+
+networks:
+  network-odoo-db:
+    name: network-odoo-db
+  network-odoo-nginx:
+    name: network-odoo-nginx

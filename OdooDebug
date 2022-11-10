@@ -1,0 +1,12 @@
+FROM odoo:16.0
+USER root
+ADD requirements.txt /var/lib/odoo/requirements.txt
+RUN python3 -m pip install -r /var/lib/odoo/requirements.txt
+
+RUN printf "\nimport debugpy\n" >> /usr/lib/python3/dist-packages/odoo/addons/__init__.py
+RUN printf "\ndebugpy.listen(('0.0.0.0', 3001))\n" >> /usr/lib/python3/dist-packages/odoo/addons/__init__.py
+RUN printf "print('Odoo server started waiting for attach with VSCode (press F5)')\n" >> /usr/lib/python3/dist-packages/odoo/addons/__init__.py
+RUN printf "debugpy.wait_for_client()\n" >> /usr/lib/python3/dist-packages/odoo/addons/__init__.py
+RUN printf "print('Debugpy attached successfully')\n" >> /usr/lib/python3/dist-packages/odoo/addons/__init__.py
+
+USER odoo

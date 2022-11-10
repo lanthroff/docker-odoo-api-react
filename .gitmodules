@@ -1,0 +1,6 @@
+[submodule "addons"]
+	path = addons
+	url = git@github.com:lanthroff/odoo-api.git
+[submodule "react"]
+	path = react
+	url = git@github.com:lanthroff/react-odoo.git
