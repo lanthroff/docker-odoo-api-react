@@ -1,7 +1,11 @@
 ## Installation:
 
+Add odoo.localhost into your host configuration
+```
+127.0.0.1       odoo.localhost
+```
 
-
+Build the containers
 ```
 sudo docker-compose up -d --build
 ```
@@ -11,7 +15,9 @@ Then attach debug to vscode by pressing F5 or Run > Start debugging
 ## Liste des extensions interressantes:
 
 ![alt text](extensions.png) -->
-
+Connect to http://odoo.localhost
+Create a database with admin password being "educacode", then log in
+and activate the module "example"
 ## settings.json
 
 ```json
