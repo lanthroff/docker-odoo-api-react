@@ -11,14 +11,12 @@ sudo docker-compose up -d --build
 ```
 
 3. Then attach debug to vscode by pressing F5 or Run > Start debugging
-<!-- 
-## Liste des extensions interressantes:
-
-![alt text](extensions.png) -->
 4. Connect to http://odoo.localhost
-5. Create a database with admin password being "educacode", then log in
+5. Create a database with master password being "educacode", then log in
 and activate the module "example"
-
+6. Go to users list and add Api Documentation group to your user
+7. You can visit the OpenApi documentation at http://odoo.localhost/documentation
+   
 ## settings.json
 
 ```json
