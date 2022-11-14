@@ -13,12 +13,10 @@ services:
       - network-odoo-nginx
   web:
     container_name: "docker-web-odoo"
-    platform: linux/x86_64
+    # platform: linux/x86_64
     restart: always 
     user: odoo:odoo
-    build: 
-      dockerfile: OdooDebug
-      context: .
+    build: mactimizer
     depends_on:
       - db
     ports:
@@ -37,9 +35,8 @@ services:
 
   db:
     container_name: "docker-db-postgresql"
-    platform: linux/x86_64
     restart: always
-    image: postgis/postgis
+    image: arm64v8/postgres
     ports:
       - "5432:5432"
     environment:
