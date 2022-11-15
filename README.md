@@ -1,3 +1,6 @@
+## Version
+
+Branch main is based on arm64v8, and is to be used on apple chips, use branch amd64 otherwise
 ## Installation:
 0. Clone with submodules
 ```

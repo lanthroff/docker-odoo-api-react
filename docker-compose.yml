@@ -13,7 +13,6 @@ services:
       - network-odoo-nginx
   web:
     container_name: "docker-web-odoo"
-    # platform: linux/x86_64
     restart: always 
     user: odoo:odoo
     build: mactimizer
