@@ -1,5 +1,8 @@
 ## Installation:
-
+0. Clone with submodules
+```
+	git@github.com:lanthroff/docker-odoo-api-react.git --recurse-submodules
+```
 1. Add odoo.localhost into your host configuration
 ```
 127.0.0.1       odoo.localhost
