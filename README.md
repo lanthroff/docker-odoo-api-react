@@ -16,7 +16,7 @@ Branch main is based on arm64v8, and is to be used on apple chips, use branch am
 sudo docker-compose up -d --build
 ```
 
-3. Then attach debug to vscode by pressing F5 or Run > Start debugging
+3. Then Run > Start debugging
 4. Connect to http://odoo.localhost
 5. Create a database with master password being "educacode", then log in
 and activate the module "example"
