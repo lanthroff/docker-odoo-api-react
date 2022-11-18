@@ -2,12 +2,9 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "DebugPy",
+			"name": "Start debuging",
 			"type": "python",
 			"request": "attach",
-			"presentation": {
-				"hidden": true
-			},
 			"connect": {
 				"host": "localhost",
 				"port": 3001
@@ -18,14 +15,6 @@
 					"remoteRoot": "."
 				}
 			]
-		}
-	],
-	"compounds": [
-		{
-			"name": "Odoo/React",
-			"configurations": ["DebugPy"],
-			"preLaunchTask": "Compose",
-			"stopAll": true
 		}
 	]
 }
